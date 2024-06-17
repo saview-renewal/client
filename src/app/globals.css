@@ -16,6 +16,7 @@
   }
 }
 
+html,
 body {
   color: rgb(var(--foreground-rgb));
   font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕",

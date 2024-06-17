@@ -1,17 +1,28 @@
-export default function MainHeader() {
+"use client";
+import { Box, Flex, Button, Image, useTheme, HStack } from "@chakra-ui/react";
+import Logo from "@/_assets/images/logo_tranverse.png";
+import { useState } from "react";
+
+const MainHeader = () => {
+  const [isLogin, setIsLogin] = useState(false);
   return (
-    <header className="bg-white shadow border-b-1">
-      <div className="mx-auto flex-row max-w-7xl py-6 px-4 sm:px-6 lg:px-8 ">
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-          SAVIEW
-        </h1>
-        <h2 className="text-lg font-bold tracking-tight text-gray-500">
-          새 질문 쓰기
-        </h2>
-        <h2 className="text-lg font-bold tracking-tight text-gray-500">
-          로그인
-        </h2>
-      </div>
-    </header>
+    <Box bg="white" px={4} py={2} shadow="md" flexDir={"row"}>
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
+        maxW={"8xl"}
+        mx="auto"
+      >
+        <Image src={Logo.src} alt="Logo" width={200} />
+        <Flex>
+          <Button colorScheme="blue" variant="ghost" mr={4}>
+            새 글 쓰기
+          </Button>
+          <Button colorScheme="blue">{isLogin ? "로그아웃" : "로그인"}</Button>
+        </Flex>
+      </Flex>
+    </Box>
   );
-}
+};
+
+export default MainHeader;
