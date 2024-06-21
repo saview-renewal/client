@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import MainHeader from "@/_components/main-header";
+
 import { Providers } from "@/_context/providers";
-import { Box } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <MainHeader />
-          <Box maxW={"8xl"} mx={"auto"}>
-            {children}
+          <Box
+            bgGradient="linear(to-r, rgba(173, 216, 230, 0.2), rgba(144, 238, 144, 0.2), rgba(109, 182, 225, 0.2))"
+            height={"100vh"}
+          >
+            <VStack mx={"auto"} width={"100%"}>
+              {children}
+            </VStack>
           </Box>
         </Providers>
       </body>
