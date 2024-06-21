@@ -3,11 +3,17 @@ import { Box, Flex, Button, Image, useTheme, HStack } from "@chakra-ui/react";
 import Logo from "@/_assets/images/logo_tranverse.png";
 import { useState } from "react";
 import SearchBar from "./SearchBar/SearchBar";
+import { useRouter } from "next/navigation";
 
 const MainHeader = ({ maxW }: { maxW: string }) => {
   const [isLogin, setIsLogin] = useState(false);
+  const router = useRouter();
   const isFirstPage = maxW !== "8xl";
-
+  const handlePressButton = () => {
+    if (!isLogin) {
+      router.push("/users/login");
+    }
+  };
   return (
     <Box
       bg="transparent"
@@ -30,7 +36,9 @@ const MainHeader = ({ maxW }: { maxW: string }) => {
           <Button colorScheme="blue" variant="ghost" mr={4}>
             새 글 쓰기
           </Button>
-          <Button colorScheme="blue">{isLogin ? "로그아웃" : "로그인"}</Button>
+          <Button onClick={handlePressButton} colorScheme="blue">
+            {isLogin ? "로그아웃" : "로그인"}
+          </Button>
         </Flex>
       </Flex>
     </Box>
